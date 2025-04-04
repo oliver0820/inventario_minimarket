@@ -10,6 +10,14 @@ function buscarProducto() {
   mostrarProductos(filteredProductos);
 }
 
+// Función para eliminar productos
+function eliminarProducto(index) {
+  let productos = JSON.parse(localStorage.getItem('productos')) || [];
+  productos.splice(index, 1);  // Eliminar el producto de la lista
+  localStorage.setItem('productos', JSON.stringify(productos));  // Actualizar localStorage
+  mostrarProductos();  // Volver a mostrar la lista de productos actualizada
+}
+
 // Función para mostrar productos
 function mostrarProductos(productos = []) {
   const lista = document.getElementById('producto-lista');
@@ -60,13 +68,4 @@ document.getElementById('producto-form').addEventListener('submit', function(e) 
 
   if (editando) {
     productos[indexActual] = producto;
-    editando = false;
-    indexActual = null;
-  } else {
-    productos.push(producto);
-  }
 
-  localStorage.setItem('productos', JSON.stringify(productos));
-  mostrarProductos();
-  this.reset();
-});
