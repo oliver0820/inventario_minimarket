@@ -34,11 +34,12 @@ function mostrarProductos() {
       <td>${producto.nombre}</td>
       <td>${producto.cantidad}</td>
       <td>${producto.precio}</td>
-      <td>--</td>
+      <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
     `;
     lista.appendChild(fila);
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', mostrarProductos);
 
